@@ -168,7 +168,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\ImyDBContext.cs" />
     <Compile Include="Models\Initializzer.cs" />
     <Compile Include="Models\myDbContext.cs" />
     <Compile Include="Models\Order.cs" />
