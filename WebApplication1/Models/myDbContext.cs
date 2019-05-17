@@ -6,7 +6,7 @@ using System.Web;
 
 namespace WebApplication1.Models
 {
-    public class myDbContext : DbContext
+    public class myDbContext : DbContext, ImyDBContext
     {
         public myDbContext()
             : base("connection")
