@@ -19,14 +19,14 @@ namespace WebApplication1.Controllers
         // GET: api/Products
         public IQueryable<Product> GetProduct()
         {
-            return db.Product;
+            return db.Products;
         }
 
         // GET: api/Products/5
         [ResponseType(typeof(Product))]
         public IHttpActionResult GetProduct(Guid id)
         {
-            Product product = db.Product.Find(id);
+            Product product = db.Products.Find(id);
             if (product == null)
             {
                 return NotFound();
@@ -79,7 +79,7 @@ namespace WebApplication1.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Product.Add(product);
+            db.Products.Add(product);
 
             try
             {
@@ -104,13 +104,13 @@ namespace WebApplication1.Controllers
         [ResponseType(typeof(Product))]
         public IHttpActionResult DeleteProduct(Guid id)
         {
-            Product product = db.Product.Find(id);
+            Product product = db.Products.Find(id);
             if (product == null)
             {
                 return NotFound();
             }
 
-            db.Product.Remove(product);
+            db.Products.Remove(product);
             db.SaveChanges();
 
             return Ok(product);
@@ -127,7 +127,7 @@ namespace WebApplication1.Controllers
 
         private bool ProductExists(Guid id)
         {
-            return db.Product.Count(e => e.Id == id) > 0;
+            return db.Products.Count(e => e.Id == id) > 0;
         }
     }
 }

@@ -171,6 +171,8 @@
     <Compile Include="Models\Initializzer.cs" />
     <Compile Include="Models\myDbContext.cs" />
     <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderDTO.cs" />
+    <Compile Include="Models\OrderDTODetails.cs" />
     <Compile Include="Models\OrderProduct.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

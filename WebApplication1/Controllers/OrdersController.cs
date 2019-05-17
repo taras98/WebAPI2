@@ -17,16 +17,16 @@ namespace WebApplication1.Controllers
         private myDbContext db = new myDbContext();
 
         // GET: api/Orders
-        public IQueryable<Order> GetOrder()
+        public IQueryable<Order> GetOrders()
         {
-            return db.Order;
+            return db.Orders;
         }
 
         // GET: api/Orders/5
         [ResponseType(typeof(Order))]
         public IHttpActionResult GetOrder(Guid id)
         {
-            Order order = db.Order.Find(id);
+            Order order = db.Orders.Find(id);
             if (order == null)
             {
                 return NotFound();
@@ -79,7 +79,7 @@ namespace WebApplication1.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Order.Add(order);
+            db.Orders.Add(order);
 
             try
             {
@@ -104,13 +104,13 @@ namespace WebApplication1.Controllers
         [ResponseType(typeof(Order))]
         public IHttpActionResult DeleteOrder(Guid id)
         {
-            Order order = db.Order.Find(id);
+            Order order = db.Orders.Find(id);
             if (order == null)
             {
                 return NotFound();
             }
 
-            db.Order.Remove(order);
+            db.Orders.Remove(order);
             db.SaveChanges();
 
             return Ok(order);
@@ -127,7 +127,7 @@ namespace WebApplication1.Controllers
 
         private bool OrderExists(Guid id)
         {
-            return db.Order.Count(e => e.Id == id) > 0;
+            return db.Orders.Count(e => e.Id == id) > 0;
         }
     }
 }

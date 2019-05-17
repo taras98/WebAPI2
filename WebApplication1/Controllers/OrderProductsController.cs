@@ -17,17 +17,16 @@ namespace WebApplication1.Controllers
         private myDbContext db = new myDbContext();
 
         // GET: api/OrderProducts
-        public IQueryable<OrderProduct> GetOrderProduct()
+        public IQueryable<OrderProduct> GetOrderProducts()
         {
-          
-            return db.OrderProduct;
+            return db.OrderProducts.Include(b=>b.Orders).Include(b=>b.Products);
         }
 
         // GET: api/OrderProducts/5
         [ResponseType(typeof(OrderProduct))]
         public IHttpActionResult GetOrderProduct(Guid id)
         {
-            OrderProduct orderProduct = db.OrderProduct.Find(id);
+            OrderProduct orderProduct = db.OrderProducts.Find(id);
             if (orderProduct == null)
             {
                 return NotFound();
@@ -80,7 +79,7 @@ namespace WebApplication1.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.OrderProduct.Add(orderProduct);
+            db.OrderProducts.Add(orderProduct);
 
             try
             {
@@ -105,13 +104,13 @@ namespace WebApplication1.Controllers
         [ResponseType(typeof(OrderProduct))]
         public IHttpActionResult DeleteOrderProduct(Guid id)
         {
-            OrderProduct orderProduct = db.OrderProduct.Find(id);
+            OrderProduct orderProduct = db.OrderProducts.Find(id);
             if (orderProduct == null)
             {
                 return NotFound();
             }
 
-            db.OrderProduct.Remove(orderProduct);
+            db.OrderProducts.Remove(orderProduct);
             db.SaveChanges();
 
             return Ok(orderProduct);
@@ -128,7 +127,7 @@ namespace WebApplication1.Controllers
 
         private bool OrderProductExists(Guid id)
         {
-            return db.OrderProduct.Count(e => e.Id == id) > 0;
+            return db.OrderProducts.Count(e => e.Id == id) > 0;
         }
     }
 }

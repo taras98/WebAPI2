@@ -6,14 +6,14 @@ using System.Web;
 
 namespace WebApplication1.Models
 {
-    public class myDbContext:DbContext  
+    public class myDbContext : DbContext
     {
         public myDbContext()
-            :base ("connection")
+            : base("connection")
         { }
-        public DbSet<Order> Order { get; set; }
-        public DbSet<Product> Product { get; set; }
-        public DbSet<OrderProduct> OrderProduct { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<OrderProduct> OrderProducts { get; set; }
 
     }
 }
