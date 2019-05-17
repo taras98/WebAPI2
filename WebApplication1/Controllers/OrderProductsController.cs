@@ -19,9 +19,7 @@ namespace WebApplication1.Controllers
         // GET: api/OrderProducts
         public IQueryable<OrderProduct> GetOrderProduct()
         {
-            //var t = db.Order.First();
-            //var t1 = db.OrderProduct.First();
-            //var t2 = db.Product.First();
+          
             return db.OrderProduct;
         }
 
